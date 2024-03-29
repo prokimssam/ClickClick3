@@ -294,7 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6130079239983737998}
   - component: {fileID: 876103800590447243}
-  - component: {fileID: 1977960864198269224}
+  - component: {fileID: 564296577333795130}
   m_Layer: 0
   m_Name: NoteGroup
   m_TagString: Untagged
@@ -336,28 +336,27 @@ MonoBehaviour:
   noteMaxNum: 5
   notePrefab: {fileID: 4823509450293753806, guid: 80ac99a279d24c745add28788d6713b7, type: 3}
   noteSpawn: {fileID: 62821847304810952}
-  noteGap: 6
---- !u!95 &1977960864198269224
-Animator:
-  serializedVersion: 5
+  noteGap: 7.5
+  btnSpriteRender: {fileID: 3168166155930455681}
+  normalBtnSprite: {fileID: 21300000, guid: d7b61edc0b017174095824530172ad1f, type: 3}
+  SelectBtnSprite: {fileID: 21300000, guid: 4fce3950ae84d9c46a154454c898bf17, type: 3}
+  anim: {fileID: 564296577333795130}
+--- !u!111 &564296577333795130
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5449343150818907869}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a9514daccf5ce104e96458307bd0b07c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: e8aafb08cece04c42b7a061a26403ebd, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: e8aafb08cece04c42b7a061a26403ebd, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &7545600907655443267
 GameObject:
   m_ObjectHideFlags: 0
