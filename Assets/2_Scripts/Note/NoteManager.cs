@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteManager : MonoBehaviour
@@ -14,13 +12,15 @@ public class NoteManager : MonoBehaviour
 
     public void OnInput(KeyCode keyCode)
     {
-        if (keyCode == KeyCode.A)
+        int randId = Random.Range(0, noteGroupArr.Length);
+        bool isApple = randId == 0 ? true : false;
+
+        foreach (NoteGroup noteGroup in noteGroupArr)
         {
-            noteGroupArr[0].OnInput(true);
-        }
-        if (keyCode == KeyCode.S)
-        {
-            noteGroupArr[1].OnInput(true);
+            if (keyCode == noteGroup.KeyCode)
+            {
+                noteGroup.OnInput(isApple);
+            }
         }
     }
 }
