@@ -57,7 +57,7 @@ public class NoteGroup : MonoBehaviour
         if (noteList.Count > 0)
         {
             Note delNote = noteList[0];
-            delNote.DeleteNote();
+            delNote.CalScoreAndDeleteNote();
             noteList.RemoveAt(0);
         }
 

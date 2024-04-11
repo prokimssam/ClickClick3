@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
             if (Input.GetKeyDown(keyCode))
             {
                 NoteManager.Instance.OnInput(keyCode);
+                break;
             }
         }
     }
