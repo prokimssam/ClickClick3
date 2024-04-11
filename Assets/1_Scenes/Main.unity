@@ -1071,8 +1071,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreImg: {fileID: 1385400678}
   scoreTmp: {fileID: 1849706879}
-  timerImg: {fileID: 0}
-  timerTmp: {fileID: 0}
+  timerImg: {fileID: 1903754223}
+  timerTmp: {fileID: 542138760}
 --- !u!4 &2046690899
 Transform:
   m_ObjectHideFlags: 0
