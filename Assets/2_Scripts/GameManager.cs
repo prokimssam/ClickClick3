@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,10 +8,22 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int maxScore = 100;
     [SerializeField] private int noteGroupCreateScore = 10;
+    [SerializeField] private GameObject gameClearObj;
+    [SerializeField] private GameObject gameOverObj;
     private int score;
     private int nextNoteGroupUnlockCnt;
 
     [SerializeField] private float maxTime = 30;
+
+    public bool IsGameDone {  
+        get
+        {
+            if (gameClearObj.activeSelf || gameOverObj.activeSelf)
+                return true;
+            else
+                return false;
+        }
+    }
 
     private void Awake()
     {
@@ -22,6 +34,9 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.OnScoreChange(score, maxScore);
         NoteManager.Instance.Create();
+
+        gameClearObj.SetActive(false);
+        gameOverObj.SetActive(false);
 
         StartCoroutine(TimerCoroutine());
     }
@@ -35,9 +50,14 @@ public class GameManager : MonoBehaviour
             currentTime += Time.deltaTime;
             UIManager.Instance.OnTimerChange(currentTime, maxTime);
             yield return null;
+
+            if (IsGameDone)
+            {
+                yield break;
+            }
         }
 
-        Debug.Log("Game Over................");
+        gameOverObj.SetActive(true);
     }
 
     public void CalculateScore(bool isApple)
@@ -52,10 +72,23 @@ public class GameManager : MonoBehaviour
                 nextNoteGroupUnlockCnt = 0;
                 NoteManager.Instance.CreateNoteGroup();
             }
-        } else
+
+            if (maxScore <= score)
+            {
+                gameClearObj.SetActive(true);
+            }
+
+        }
+        else
         {
             score--;
         }
         UIManager.Instance.OnScoreChange(score, maxScore);
+    }
+
+    public void Restart()
+    {
+        Debug.Log("Game Restart!................");
+        SceneManager.LoadScene(0);
     }
 }

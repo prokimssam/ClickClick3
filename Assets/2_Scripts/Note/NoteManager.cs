@@ -31,7 +31,9 @@ public class NoteManager : MonoBehaviour
 
     public void CreateNoteGroup()
     {
-        int noteGroupCount = noteGroupList.Count;
+        if (wholeKeyCodeArr.Length == noteGroupList.Count)
+            return;
+
         KeyCode keycode = wholeKeyCodeArr[noteGroupList.Count];
         CreateNoteGroup(keycode);
     }
@@ -49,7 +51,7 @@ public class NoteManager : MonoBehaviour
 
     public void OnInput(KeyCode keyCode)
     {
-        int randId = Random.Range(0, noteGroupList.Count);
+        int randId = Random.Range(0, 2);
         bool isApple = randId == 0 ? true : false;
 
         foreach (NoteGroup noteGroup in noteGroupList)
