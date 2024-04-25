@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int maxScore = 100;
     [SerializeField] private int noteGroupCreateScore = 10;
-    [SerializeField] private GameObject gameClearObj;
-    [SerializeField] private GameObject gameOverObj;
+    private bool isGameClear = false;
+    private bool isGameOver = false;
     private int score;
     private int nextNoteGroupUnlockCnt;
 
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameDone {  
         get
         {
-            if (gameClearObj.activeSelf || gameOverObj.activeSelf)
+            if (isGameClear || isGameOver)
                 return true;
             else
                 return false;
@@ -34,9 +34,6 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.OnScoreChange(score, maxScore);
         NoteManager.Instance.Create();
-
-        gameClearObj.SetActive(false);
-        gameOverObj.SetActive(false);
 
         StartCoroutine(TimerCoroutine());
     }
@@ -57,7 +54,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        gameOverObj.SetActive(true);
+        isGameOver = true;
     }
 
     public void CalculateScore(bool isApple)
@@ -75,7 +72,7 @@ public class GameManager : MonoBehaviour
 
             if (maxScore <= score)
             {
-                gameClearObj.SetActive(true);
+                isGameClear = true;
             }
 
         }
