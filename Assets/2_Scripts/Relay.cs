@@ -9,6 +9,8 @@ public class Relay : MonoBehaviour
     {
         Debug.Log($"myTime " + GameManager.Instance.myTime);
         Debug.Log($"minTime " + GameManager.Instance.minTime);
+
+        Debug.Log($"GameOver : {GameManager.Instance.IsGameOver()}, GameClear : {GameManager.Instance.IsGameClear()}");
     }
 
     public void Replay()

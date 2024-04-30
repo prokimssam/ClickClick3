@@ -8,14 +8,24 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int maxScore = 100;
     [SerializeField] private int noteGroupCreateScore = 10;
-    private bool isGameClear = false;
-    private bool isGameOver = false;
     private int score;
     private int nextNoteGroupUnlockCnt;
+    private bool isGameClear = false;
+    private bool isGameOver = false;
 
     [SerializeField] private float maxTime = 30;
     [HideInInspector] public float myTime;
     [HideInInspector] public float minTime;
+
+    public bool IsGameClear()
+    {
+        return isGameClear;
+    }
+
+    public bool IsGameOver()
+    {
+        return isGameOver;
+    }
 
     public bool IsGameDone
     {
