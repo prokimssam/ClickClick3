@@ -14,12 +14,25 @@ public class GameManager : MonoBehaviour
     private int nextNoteGroupUnlockCnt;
 
     [SerializeField] private float maxTime = 30;
+    [HideInInspector] public float myTime;
+    [HideInInspector] public float minTime;
 
-    public bool IsGameDone {  
+    public bool IsGameDone
+    {
         get
         {
             if (isGameClear || isGameOver)
+            {
+                minTime = PlayerPrefs.GetFloat("minTime", 1000f);
+                if (minTime >= myTime)
+                {
+                    minTime = myTime;
+                    PlayerPrefs.SetFloat("minTime", minTime);
+                }
+
+                SceneManager.LoadScene("Close");
                 return true;
+            }
             else
                 return false;
         }
@@ -28,6 +41,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -45,6 +59,7 @@ public class GameManager : MonoBehaviour
         while (currentTime < maxTime)
         {
             currentTime += Time.deltaTime;
+            myTime = currentTime;
             UIManager.Instance.OnTimerChange(currentTime, maxTime);
             yield return null;
 
