@@ -7,8 +7,8 @@ public class Relay : MonoBehaviour
 {
     private void Start()
     {
-        Debug.Log($"myTime " + GameManager.Instance.myTime);
-        Debug.Log($"minTime " + GameManager.Instance.minTime);
+        Debug.Log($"myTime " + GameManager.myTime);
+        Debug.Log($"minTime " + GameManager.minTime);
 
         Debug.Log($"GameOver : {GameManager.Instance.IsGameOver()}, GameClear : {GameManager.Instance.IsGameClear()}");
     }

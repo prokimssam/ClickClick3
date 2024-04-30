@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     private bool isGameOver = false;
 
     [SerializeField] private float maxTime = 30;
-    [HideInInspector] public float myTime;
-    [HideInInspector] public float minTime;
+    [HideInInspector] public static float myTime;
+    [HideInInspector] public static float minTime;
 
     public bool IsGameClear()
     {
@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
